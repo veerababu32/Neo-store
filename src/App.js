@@ -1,24 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import { Outlet } from 'react-router-dom';
+import { Footer, Header, OfferBanner } from './components';
+import { useSelector } from 'react-redux';
+import 'react-toastify/ReactToastify.css';
 
 function App() {
+  const loginStatus = useSelector((state) => state.auth.status);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <>
+      <header className="sticky top-0 z-10 shadow">
+        <OfferBanner />
+        {loginStatus && <Header />}
       </header>
-    </div>
+      <main>
+        <Outlet />
+      </main>
+      <footer>
+        <Footer />
+      </footer>
+    </>
   );
 }
 

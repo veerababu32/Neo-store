@@ -1,8 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji',
+    'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -10,4 +13,65 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.not-found {
+  height: calc(100vh - 424px);
+}
+
+.banner-section .slick-next {
+  background: url('./assets/images/arrow-right.png') center center no-repeat !important;
+  right: 0;
+
+  &::before {
+    display: none;
+  }
+}
+
+.banner-section .slick-prev {
+  background: url('./assets/images/arrow-left.png') center center no-repeat !important;
+  left: 0;
+
+  &::before {
+    display: none;
+  }
+}
+
+.mini-imgs-con {
+  height: 468px;
+  overflow-y: scroll;
+}
+
+.mini-imgs-con::-webkit-scrollbar,
+.brand-filter::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.mini-imgs-con,
+.brand-filter {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+/* Shimmer */
+.shimmer {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(-45deg, #eee 40%, #fafafa 50%, #eee 60%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+.item-right-section {
+  width: calc(100% - 164px);
 }
