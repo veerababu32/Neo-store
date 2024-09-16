@@ -23,18 +23,18 @@ function AlsoLike({ page }) {
   }, [URL]);
 
   return (
-    <div className="sm:container sm:mx-auto alsoLike-section">
-      <h2 className="uppercase text-3xl font-bold text-[#282627] text-center">
+    <div className="lg:container lg:mx-auto alsoLike-section">
+      <h2 className="uppercase text-xl md:text-3xl font-bold text-[#282627] text-center">
         You might also like
       </h2>
-      <p className="text-base font-medium text-[#7F7F7F] text-center">
+      <p className="text-sm md:text-base font-medium text-[#7F7F7F] text-center">
         From glam vibes to laid-back comfort, these sofas all have one thing in
         common—and that’s amazing value.
       </p>
       <div className="py-2 text-center">
         <span className="inline-block w-36 border-t-2 border-solid border-black"></span>
       </div>
-      <div className="mt-7 flex justify-between gap-4">
+      <div className="mt-7 flex flex-col items-center gap-4 md:items-start md:flex-row md:flex-wrap md:justify-center lg:justify-between">
         {data?.products &&
           data.products.map((item) => (
             <div className="w-[max-content]" key={item.id}>

@@ -3,6 +3,9 @@ import { logout } from '../../feature/auth/authSlice';
 import { account, cart, Logout, wishlist } from '../../assets';
 import { Link } from 'react-router-dom';
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react';
+import { Spiral as Hamburger } from 'hamburger-react';
+import { useState } from 'react';
+import { toggleMenuBar } from '../../feature/home/homeSlice';
 
 function Header() {
   const navItems = [
@@ -32,31 +35,56 @@ function Header() {
     },
   ];
 
+  const [toggleMenu, setToggleMenu] = useState(false);
   const ItemsInCart = useSelector((state) => state.cart.bagCount);
   const name = JSON.parse(sessionStorage.getItem('userData'));
   const dispatch = useDispatch();
 
+  const handleToggleMenu = () => {
+    setToggleMenu((prev) => !prev);
+    dispatch(toggleMenuBar());
+  };
+
   return (
     <section className="bg-white">
-      <nav className="flex justify-between items-center py-4 sm:container sm:mx-auto">
-        <div className="text-[#BB0100]">
-          <Link to="/" className="font-bold text-3xl text-[#BB0100]">
-            NeoSTORE
-          </Link>
+      <div className={`offcanvasSidebar${toggleMenu ? ' active' : ''}`}></div>
+      <nav className="flex justify-between items-center p-4 lg:container lg:mx-auto lg:px-8 2xl:px-0">
+        <Link
+          to="/"
+          onClick={
+            document.body.clientWidth === 320 && toggleMenu
+              ? () => {
+                  handleToggleMenu();
+                }
+              : null
+          }
+          className="font-bold text-xl text-[#BB0100] md:text-2xl lg:text-3xl z-[115]"
+        >
+          NeoSTORE
+        </Link>
+        <div className={`menu${toggleMenu ? ' active' : ''}`}>
+          <div className="h-[40px] md:hidden"></div>
+          <ul className="flex flex-col md:flex-row">
+            {navItems.map((item, index) => (
+              <li key={index}>
+                <Link
+                  className="text-sm inline-block px-4 py-2 duration-200 lg:text-base lg:px-6"
+                  state={{ num: item.state }}
+                  onClick={
+                    document.body.clientWidth === 320
+                      ? () => {
+                          handleToggleMenu();
+                        }
+                      : null
+                  }
+                  to={item.to}
+                >
+                  {item.name}
+                </Link>
+              </li>
+            ))}
+          </ul>
         </div>
-        <ul className="flex">
-          {navItems.map((item, index) => (
-            <li key={index}>
-              <Link
-                className="inline-block px-6 py-2 duration-200"
-                state={{ num: item.state }}
-                to={item.to}
-              >
-                {item.name}
-              </Link>
-            </li>
-          ))}
-        </ul>
         <div className="flex gap-2 items-center">
           {/* <div className="w-48">
             <input
@@ -105,6 +133,14 @@ function Header() {
             )}
             <img src={cart} alt="cart" />
           </Link>
+          <div className="z-[105] md:hidden">
+            <Hamburger
+              rounded
+              size={22}
+              toggled={toggleMenu}
+              toggle={handleToggleMenu}
+            />
+          </div>
         </div>
       </nav>
     </section>

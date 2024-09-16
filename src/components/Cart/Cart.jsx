@@ -63,10 +63,10 @@ function Cart() {
     <div id="cart">
       <ToastContainer />
       <div
-        className="bg-no-repeat bg-cover h-36 flex items-center"
+        className="bg-no-repeat bg-cover h-24 flex items-center md:h-28 lg:h-36"
         style={{ backgroundImage: `url(${productsBgImg})` }}
       >
-        <div className="sm:container sm:mx-auto flex items-center">
+        <div className="flex items-center px-4 lg:container lg:mx-auto lg:px-8 2xl:px-0">
           <Link to={'/'} className="text-base font-medium text-black pr-4">
             Home
           </Link>
@@ -75,31 +75,37 @@ function Cart() {
           </span>
         </div>
       </div>
-      <div className="sm:container sm:mx-auto pt-6 pb-14">
+      <div className="pt-6 pb-14 px-4 lg:container lg:mx-auto lg:px-8 2xl:px-0">
         {cartItems.length > 0 ? (
-          <div className="flex gap-5 mb-20">
-            <div className="w-3/4 flex flex-col gap-4">
+          <div className="flex flex-col mb-10 gap-2 md:flex-row md:gap-5 md:mb-20">
+            <div className="w-full flex gap-2 flex-col md:w-3/4 md:gap-4">
               {cartItems.map((item, index) => (
                 <div
-                  className="flex rounded-sm border border-[#BFBFBF] p-4"
+                  className="flex rounded-sm border border-[#BFBFBF] p-1 lg:p-4"
                   id={`cart_item_${item.id}`}
                   key={index}
                 >
-                  <div className="h-36 w-36 mr-5 shadow">
+                  <div className="h-36 w-30 mr-2 shadow md:mr-5 md:w-36">
                     <img
                       src={item.image}
                       alt={item.title}
-                      className="h-36 w-36 border rounded"
+                      className="h-36 w-30 border rounded md:w-36"
                     />
                   </div>
-                  <div className="item-right-section flex justify-between">
+                  <div
+                    className={`flex justify-between${
+                      document.body.clientWidth >= '768'
+                        ? ' item-right-section'
+                        : ' '
+                    }`}
+                  >
                     <div className="flex flex-col justify-between">
-                      <div className="h-full flex flex-col justify-between gap-1">
+                      <div className="h-full flex flex-col justify-between md:gap-1">
                         <div>
-                          <h2 className="text-sm font-normal text-[#666666] mb-1">
+                          <h2 className="text-xs font-normal text-[#666666] mb-1 md:text-sm">
                             {item.title}
                           </h2>
-                          <p className="text-base font-medium text-[#333333] mb-1">
+                          <p className="text-xs font-medium text-[#333333] mb-1 md:text-base">
                             <span className="mr-2 text-[#C2C2C2] line-through">
                               &#8377;
                               {(
@@ -110,7 +116,7 @@ function Cart() {
                             &#8377;{item.price}
                           </p>
                           {item.discount > 10 && (
-                            <p className="text-sm font-medium text-[#FE3F3F] mb-1">
+                            <p className="text-xs font-medium text-[#FE3F3F] mb-1 md:text-sm">
                               you save:{' '}
                               <span>
                                 &#8377;
@@ -123,12 +129,12 @@ function Cart() {
                             </p>
                           )}
                         </div>
-                        <div className="flex items-center gap-4">
-                          <p className="text-base font-medium">
+                        <div className="flex flex-col justify-center gap-1 md:flex-row md:gap-4">
+                          <p className="text-xs font-medium md:text-base">
                             Quantity: {item.quantity}
                           </p>
                           <p
-                            className="flex items-center gap-2 w-fit text-sm font-normal text-[#E91B1A] cursor-pointer"
+                            className="flex items-center gap-1 w-fit text-xs font-normal text-[#E91B1A] cursor-pointer md:text-sm md:gap-2"
                             onClick={() => handleATW(item.id)}
                           >
                             <span
@@ -162,8 +168,8 @@ function Cart() {
                 </div>
               ))}
             </div>
-            <div className="w-1/3">
-              <div className="flex flex-col gap-4 rounded-sm border border-[#BFBFBF] py-11 px-9">
+            <div className="w-full md:w-1/2 xl:w-1/3">
+              <div className="flex flex-col gap-2 rounded-sm border border-[#BFBFBF] p-2 md:p-4 lg:py-11 lg:px-9 lg:gap-4">
                 <h3 className="text-base font-medium text-[#666666]">
                   Apply Coupon
                 </h3>

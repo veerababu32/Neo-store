@@ -3,7 +3,7 @@ import axios from 'axios';
 import { login } from '../../feature/auth/authSlice';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { Container, Loader, Input } from '../index';
+import { Loader, Input } from '../index';
 import { LoginImg } from '../../assets/index';
 import { useForm } from 'react-hook-form';
 import conf from '../../conf/conf';
@@ -94,28 +94,32 @@ function Login() {
   };
 
   return (
-    <Container>
+    <>
       <ToastContainer />
       {loader ? (
         <Loader />
       ) : (
-        <div className="flex justify-around items-center py-4">
-          <div className="w-1/2 flex flex-col">
-            <h1 className="font-bold text-3xl pl-20 text-[#BB0100]">
+        <div className="w-full flex flex-col lg:flex-row lg:justify-around p-4 xl:container xl:mx-auto xl:p-8 2xl:px-0">
+          <div className="flex flex-col xl:w-1/2">
+            <h1 className="font-bold text-xl text-center text-[#BB0100] mb-2 md:text-2xl lg:text-3xl xl:text-start">
               NeoSTORE
             </h1>
-            <img src={LoginImg} alt="Login img" className="py-20 mx-auto" />
+            <img
+              src={LoginImg}
+              alt="Login img"
+              className="hidden lg:inline-block lg:pt-8 xl:py-20 xl:mx-auto"
+            />
           </div>
-          <div className="w-1/2 flex justify-center items-center">
+          <div className="flex justify-center items-center xl:w-1/2">
             <form
               onSubmit={handleSubmit(onSubmit)}
-              className="h-max bg-white flex flex-col justify-center rounded-2xl w-fit px-8 py-10"
+              className="h-max bg-white flex flex-col justify-center rounded-2xl w-fit p-4 xl:w-96 xl:py-10 xl:px-8"
               style={{ boxShadow: '0px 0px 15px 2px #0000000F' }}
             >
               <h1 className="font-bold text-2xl text-[#E91B1A] text-center">
                 LOG IN
               </h1>
-              <div className="pt-10 w-96">
+              <div className="pt-4 xl:pt-10">
                 <div>
                   <Input
                     type="text"
@@ -204,7 +208,7 @@ function Login() {
           </div>
         </div>
       )}
-    </Container>
+    </>
   );
 }
 

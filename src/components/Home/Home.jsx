@@ -70,12 +70,53 @@ function Home() {
   }, [URL]);
 
   const bannerSettings = {
-    autoplay: false,
+    // autoplay: false,
+    responsive: [
+      {
+        breakpoint: 320,
+        settings: {
+          arrows: false,
+        },
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          arrows: true,
+        },
+      },
+    ],
   };
 
   const neostoreSettings = {
     slidesToShow: 6,
     arrows: false,
+    autoplay: false,
+    responsive: [
+      {
+        breakpoint: 320,
+        settings: {
+          slidesToShow: 2,
+        },
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 3,
+        },
+      },
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 5,
+        },
+      },
+      {
+        breakpoint: 1440,
+        settings: {
+          slidesToShow: 6,
+        },
+      },
+    ],
   };
 
   return (
@@ -84,28 +125,29 @@ function Home() {
         <Loader />
       ) : (
         <>
-          <div className="bg-[#faefe9] banner-section">
+          <div className="bg-[#faefe9] banner-section py-4 md:py-0">
             <ReactSlider settings={bannerSettings}>
               {data?.homeDecors?.products &&
                 data?.homeDecors?.products.map((item) => (
                   <div key={item.id}>
                     <div
-                      className="bg-no-repeat bg-contain bg-right"
+                      className="bg-no-repeat bg-contain bg-right h-auto md:h-[500px] xl:h-[600px]"
                       style={{
-                        height: '600px',
                         backgroundImage: `url(${item.images[0]})`,
                       }}
                     >
-                      <div className="flex flex-col justify-center h-[inherit] gap-8 w-[max-content] pl-10">
-                        <h2 className="text-4xl font-normal pl-2 border-solid border-black border-l-2 uppercase">
+                      <div className="flex flex-col justify-center h-[inherit] gap-8 w-[max-content] pl-4 md:pl-10">
+                        <h2 className="text-base md:text-3xl xl:text-4xl font-normal pl-2 border-solid border-black border-l-2 uppercase">
                           {item.category} <br /> 2024
                         </h2>
-                        <h3 className="text-xl font-bold">New Arrivals</h3>
-                        <h1 className="text-7xl font-light w-80">
+                        <h3 className="text-sm md:text-xl font-bold">
+                          New Arrivals
+                        </h3>
+                        <h1 className="text-xl md:text-6xl xl:text-7xl font-light w-20 md:w-80">
                           Spring Collections
                         </h1>
                         <Link
-                          className="bg-[#BB0100] text-white py-2 px-6 w-[max-content] rounded-sm"
+                          className="bg-[#BB0100] text-white text-sm md:text-base py-2 px-4 md:px-6 w-[max-content] rounded-sm"
                           to={`all-products/${item.title
                             .replace(/\s+/g, '-')
                             .toLowerCase()}`}
@@ -119,20 +161,20 @@ function Home() {
                 ))}
             </ReactSlider>
           </div>
-          <div className="sm:container sm:mx-auto pt-28 pb-14 department-section">
-            <h2 className="uppercase text-3xl font-bold text-[#282627] text-center">
+          <div className="px-4 xl:container xl:mx-auto py-14 md:pt-20 xl:pt-28 xl:px-8 2xl:px-0 department-section">
+            <h2 className="uppercase text-xl md:text-3xl font-bold text-[#282627] text-center">
               Shop By Department
             </h2>
-            <p className="text-base font-medium text-[#7F7F7F] text-center">
+            <p className="text-sm md:text-base font-medium text-[#7F7F7F] text-center">
               Site wide Discounts & Savings of up to 25%
             </p>
             <div className="py-2 text-center">
               <span className="inline-block w-36 border-t-2 border-solid border-black"></span>
             </div>
-            <div className="flex justify-between items-center h-52 gap-4 mt-5">
+            <div className="flex flex-wrap justify-around items-center gap-4 mt-5 md:gap-12 md:h-auto lg:justify-normal xl:h-52 xl:flex-nowrap xl:justify-between">
               {departArr.map(({ Icon, label, to, state }, index) => (
                 <Link
-                  className="w-48 h-48 border border-[#BFBFBF] flex flex-col justify-center items-center hover:bg-[#bb0100] hover:h-full transition-all duration-100 text-[#7f7f7f] fill-[#7f7f7f] hover:fill-white hover:text-white"
+                  className="w-32 h-32 border border-[#BFBFBF] flex flex-col justify-center items-center hover:bg-[#bb0100] hover:h-full transition-all duration-100 text-[#7f7f7f] fill-[#7f7f7f] hover:fill-white hover:text-white md:w-48 md:h-48 lg:w-40 lg:h-40 xl:w-48 xl:h-48"
                   to={to}
                   state={{ num: state }}
                   key={index}
@@ -143,18 +185,18 @@ function Home() {
               ))}
             </div>
           </div>
-          <div className="sm:container sm:mx-auto pb-14 trending-section">
-            <h2 className="uppercase text-3xl font-bold text-[#282627] text-center">
+          <div className="px-4 xl:container xl:mx-auto pb-14 xl:px-8 2xl:px-0 trending-section">
+            <h2 className="uppercase text-xl md:text-3xl font-bold text-[#282627] text-center">
               Trending
             </h2>
-            <p className="text-base font-medium text-[#7F7F7F] text-center">
+            <p className="text-sm md:text-base font-medium text-[#7F7F7F] text-center">
               Explore a wide range of affordable, well-designed and functional
               home furnishing solutions
             </p>
             <div className="py-2 text-center">
               <span className="inline-block w-36 border-t-2 border-solid border-black"></span>
             </div>
-            <div className="mt-7 flex justify-between gap-4">
+            <div className="mt-7 flex flex-col items-center gap-4 md:gap-8 md:items-start md:flex-row md:flex-wrap lg:justify-between lg:gap-4">
               {data?.trending?.products &&
                 data?.trending?.products.map((item) => (
                   <div className="w-[max-content]" key={item.id}>
@@ -181,18 +223,18 @@ function Home() {
                 ))}
             </div>
           </div>
-          <div className="sm:container sm:mx-auto pb-14 furniture-section">
-            <h2 className="uppercase text-3xl font-bold text-[#282627] text-center">
+          <div className="px-4 xl:container xl:mx-auto pb-14 xl:px-8 2xl:px-0 furniture-section">
+            <h2 className="uppercase text-xl md:text-3xl font-bold text-[#282627] text-center">
               FURNITURE FOR EVERY BUDGET
             </h2>
-            <p className="text-base font-medium text-[#7F7F7F] text-center">
+            <p className="text-sm md:text-base font-medium text-[#7F7F7F] text-center">
               From glam vibes to laid-back comfort, these sofas all have one
               thing in common—and that’s amazing value.
             </p>
             <div className="py-2 text-center">
               <span className="inline-block w-36 border-t-2 border-solid border-black"></span>
             </div>
-            <div className="mt-7 flex justify-between gap-4">
+            <div className="mt-7 flex flex-col items-center gap-4 md:flex-row md:items-start md:flex-wrap md:justify-around md:gap-12 lg:justify-normal lg:gap-4 xl:justify-between">
               {data?.furniture?.products.length > 0 &&
                 data?.furniture?.products.slice(1).map((item) => (
                   <div className="w-[max-content] bg-[#EDEDED]" key={item.id}>
@@ -200,7 +242,7 @@ function Home() {
                       <Image
                         src={item.images[0]}
                         alt={item['title']}
-                        className="w-72 h-60"
+                        className="w-60 md:w-72 h-60"
                       />
                     </div>
                     <div className="flex p-2 items-center justify-between">
@@ -228,28 +270,31 @@ function Home() {
                 ))}
             </div>
           </div>
-          <div className="sm:container sm:mx-auto pb-14 bestsellers-section">
-            <h2 className="uppercase text-3xl font-bold text-[#282627] text-center">
+          <div className="px-4 xl:container xl:mx-auto pb-14 xl:px-8 2xl:px-0 bestsellers-section">
+            <h2 className="uppercase text-xl md:text-3xl font-bold text-[#282627] text-center">
               Best Sellers
             </h2>
-            <p className="text-base font-medium text-[#7F7F7F] text-center">
+            <p className="text-sm md:text-base font-medium text-[#7F7F7F] text-center">
               Site wide Discounts & Savings of up to 25%
             </p>
             <div className="py-2 text-center">
               <span className="inline-block w-36 border-t-2 border-solid border-black"></span>
             </div>
-            <div className="mt-7 grid grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 gap-6 mt-7 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-3">
               {data?.bestSellers?.products.length > 0 &&
                 data?.bestSellers?.products.map((item) => (
-                  <div className="flex justify-between" key={item.id}>
-                    <div className="bg-[#f6f6f6] p-4">
+                  <div
+                    className="flex flex-col items-center md:items-start xl:flex-row xl:justify-between 2xl:justify-normal"
+                    key={item.id}
+                  >
+                    <div className="bg-[#f6f6f6] p-4 w-max md:w-fit">
                       <Image
                         src={item.images[0]}
                         alt={item['title']}
                         className="w-48 h-48"
                       />
                     </div>
-                    <div className="flex flex-col p-2 py-6">
+                    <div className="flex flex-col py-2 px-4 md:p-2 md:py-6">
                       <div>
                         <h2 className="text-base font-medium text-[#282627] w-48 overflow-hidden whitespace-nowrap text-ellipsis">
                           {item['title']}
@@ -283,10 +328,10 @@ function Home() {
                 ))}
             </div>
           </div>
-          <div className="sm:container sm:mx-auto pb-14 flex gap-4 text-white newArrivals-section">
+          <div className="xl:container xl:mx-auto pb-14 xl:px-8 2xl:px-0 flex flex-col md:flex-row md:gap-4 text-white newArrivals-section">
             <div
-              className="bg-no-repeat bg-cover bg-right w-1/4 flex flex-col justify-center items-center"
-              style={{ backgroundImage: `url(${lamps})`, height: '480px' }}
+              className="bg-no-repeat bg-cover bg-right h-[200px] w-full md:h-[480px] md:w-1/4 flex flex-col justify-center items-start md:items-center pl-4 md:pl-0"
+              style={{ backgroundImage: `url(${lamps})` }}
             >
               <h2 className="text-xs font-medium uppercase">New Arrivals</h2>
               <p className="text-xl font-medium pb-4">Sofa Style 2021</p>
@@ -299,8 +344,8 @@ function Home() {
               </Link>
             </div>
             <div
-              className={`bg-no-repeat bg-cover bg-center w-1/2 flex flex-col justify-center items-center`}
-              style={{ backgroundImage: `url(${decor})`, height: '480px' }}
+              className={`bg-no-repeat bg-cover bg-center h-[200px] w-full md:h-[480px] md:w-1/2 flex flex-col justify-center items-center`}
+              style={{ backgroundImage: `url(${decor})` }}
             >
               <h2 className="text-xs font-medium uppercase">New Arrivals</h2>
               <p className="text-xl font-medium pb-4">
@@ -315,10 +360,9 @@ function Home() {
               </Link>
             </div>
             <div
-              className={`bg-no-repeat bg-cover bg-center w-1/4 flex flex-col justify-center items-center`}
+              className={`bg-no-repeat bg-cover bg-center h-[200px] w-full md:h-[480px] md:w-1/4 flex flex-col justify-center items-end md:items-center pr-4 md:pr-0`}
               style={{
                 backgroundImage: `url(${decor1})`,
-                height: '480px',
               }}
             >
               <h2 className="text-xs font-medium uppercase">New Arrivals</h2>
@@ -332,25 +376,28 @@ function Home() {
               </Link>
             </div>
           </div>
-          <div className="sm:container sm:mx-auto pb-14 blog-section">
-            <h2 className="uppercase text-3xl font-bold text-[#282627] text-center">
+          <div className="px-4 xl:container xl:mx-auto pb-14 xl:px-8 2xl:px-0 blog-section">
+            <h2 className="uppercase text-xl md:text-3xl font-bold text-[#282627] text-center">
               From Our Blog
             </h2>
-            <p className="text-base font-medium text-[#7F7F7F] text-center">
+            <p className="text-sm md:text-base font-medium text-[#7F7F7F] text-center">
               See how our customers have styled products in their home
             </p>
             <div className="py-2 text-center">
               <span className="inline-block w-36 border-t-2 border-solid border-black"></span>
             </div>
-            <div className="mt-7 flex justify-between gap-4">
+            <div className="mt-7 flex flex-col items-center md:flex-row md:items-start md:justify-between gap-4 md:overflow-x-scroll md:w-[736px] lg:w-[992px] xl:overflow-visible xl:w-full">
               {data?.furniture?.products.length > 0 &&
                 data?.furniture?.products.map((item) => (
-                  <div className="w-[max-content] flex flex-col" key={item.id}>
+                  <div
+                    className="w-[max-content] h-full flex flex-col"
+                    key={item.id}
+                  >
                     <div className="bg-[#f6f6f6] p-4">
                       <Image
                         src={item.images[2]}
                         alt={item['title']}
-                        className="w-52 h-40"
+                        className="h-40 md:w-48 xl:w-52"
                       />
                     </div>
                     <div className="flex flex-col items-center justify-between text-center p-4 border flex-grow">
@@ -376,11 +423,11 @@ function Home() {
                 ))}
             </div>
           </div>
-          <div className="sm:container sm:mx-auto neostore-section">
-            <h2 className="uppercase text-3xl font-bold text-[#282627] text-center">
+          <div className="neostore-section">
+            <h2 className="uppercase text-xl md:text-3xl font-bold text-[#282627] text-center">
               #NEOSTORE
             </h2>
-            <p className="text-base font-medium text-[#7F7F7F] text-center">
+            <p className="text-sm md:text-base font-medium text-[#7F7F7F] text-center">
               Use #neostore on your post for a chance to be featured!
             </p>
             <div className="py-2 text-center">
@@ -401,7 +448,7 @@ function Home() {
                       <Image
                         src={item.images[0]}
                         alt={item['title']}
-                        className="w-48 h-48"
+                        className="w-30 h-30 md:h-48 md:w-auto xl:w-48 2xl:w-auto"
                       />
                     </Link>
                   ))}
@@ -409,22 +456,22 @@ function Home() {
             </div>
           </div>
           <div
-            className="bg-no-repeat bg-cover flex flex-col justify-center items-center subscribe-section"
+            className="bg-repeat-round bg-cover flex flex-col justify-center items-center h-[200px] md:bg-no-repeat xl:h-[340px] 2xl:container 2xl:mx-auto subscribe-section"
             style={{
-              height: '340px',
               backgroundImage: `url(${subscribe})`,
             }}
           >
-            <h2 className="uppercase text-3xl font-bold text-[#282627] text-center">
+            <h2 className="uppercase text-xl md:text-3xl font-bold text-[#282627] text-center">
               SIGN UP FOR NEWS & OFFERS!
             </h2>
-            <p className="text-base font-medium text-[#7F7F7F] text-center pb-6">
+            <p className="text-sm md:text-base font-medium text-[#7F7F7F] text-center pb-6">
               Subscribe to the weekly newsletter for all the latest updates
             </p>
             <div className="relative py-2 inline-block">
               <input
                 type="text"
-                className="outline-none w-96 text-xl font-light text-[#7f7f7f] bg-transparent border-black border-b-2"
+                name="offersMail"
+                className="outline-none md:w-96 text-xl font-light text-[#7f7f7f] bg-transparent border-black border-b-2"
                 placeholder="Enter your email"
               />
               <button className="absolute right-0">

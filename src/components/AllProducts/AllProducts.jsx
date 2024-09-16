@@ -4,6 +4,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { Image, Loader, PaginatedItems } from '../index';
 import conf from '../../conf/conf';
+import Hamburger from 'hamburger-react';
 
 function AllProducts() {
   const [data, setData] = useState({
@@ -11,6 +12,7 @@ function AllProducts() {
     allProducts: { products: [] },
   });
   const [selectCheckbox, setSelectCheckbox] = useState(null);
+  const [toggleFilter, setToggleFilter] = useState(false);
   const [fetchCounter, setFetchCounter] = useState(0);
   const [currentPage, setCurrentPage] = useState(0);
   const [loader, setLoader] = useState(false);
@@ -56,10 +58,10 @@ function AllProducts() {
         setSelectCheckbox(selectCheckbox);
       } else {
         setSelectCheckbox(null);
-        setData((prev) => ({
-          ...prev,
-          allProducts: { products: [] },
-        }));
+        // setData((prev) => ({
+        //   ...prev,
+        //   allProducts: { products: [] },
+        // }));
       }
     }
 
@@ -127,6 +129,10 @@ function AllProducts() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [num]);
 
+  const handleToggleFilter = () => {
+    setToggleFilter((prev) => !prev);
+  };
+
   return (
     <>
       {loader ? (
@@ -134,10 +140,10 @@ function AllProducts() {
       ) : (
         <>
           <div
-            className="bg-no-repeat bg-cover h-36 flex items-center"
+            className="bg-no-repeat bg-cover h-24 flex items-center md:h-28 lg:h-36"
             style={{ backgroundImage: `url(${productsBgImg})` }}
           >
-            <div className="sm:container sm:mx-auto flex items-center">
+            <div className="flex items-center px-4 lg:container lg:mx-auto lg:px-8 2xl:px-0">
               <Link to={'/'} className="text-base font-medium text-black pr-4">
                 Home
               </Link>
@@ -146,8 +152,29 @@ function AllProducts() {
               </div>
             </div>
           </div>
-          <div className="sm:container sm:mx-auto flex py-6">
-            <div className="w-1/4">
+          <div className="relative flex px-4 py-6 lg:container lg:mx-auto lg:px-8 2xl:px-0">
+            <div
+              className={`filterBar md:block md:w-2/6 lg:h-1/4${
+                toggleFilter ? ' active' : ''
+              }`}
+            >
+              <div className="flex items-center justify-between md:hidden">
+                <Link
+                  to="/"
+                  onClick={() => handleToggleFilter()}
+                  className="font-bold text-xl text-[#BB0100]"
+                >
+                  NeoSTORE
+                </Link>
+                <div>
+                  <Hamburger
+                    rounded
+                    size={22}
+                    toggled={toggleFilter}
+                    toggle={handleToggleFilter}
+                  />
+                </div>
+              </div>
               <div className="brand-section mb-2">
                 <h2 className="text-xl font-medium text-[#282627] mb-2 underline underline-offset-4">
                   Product Brand
@@ -161,7 +188,14 @@ function AllProducts() {
                           name="checkbox"
                           id={`filter-products-${index + 1}`}
                           checked={selectCheckbox === index + 1}
-                          onChange={() => handleCheckbox(index + 1)}
+                          onChange={
+                            document.body.clientWidth === 320
+                              ? () => {
+                                  handleCheckbox(index + 1);
+                                  handleToggleFilter();
+                                }
+                              : () => handleCheckbox(index + 1)
+                          }
                           className="h-4 w-4 accent-[#BB0100] cursor-pointer"
                         />
                         <label
@@ -354,8 +388,12 @@ function AllProducts() {
                 </ul>
               </div>
             </div>
-            <div className="w-full relative pb-40">
-              <div className="flex justify-between flex-wrap gap-10">
+            <div
+              className={`w-full relative${
+                data?.allProducts?.products?.length > 5 ? ' pb-40' : ''
+              }`}
+            >
+              <div className="flex justify-center flex-wrap gap-4 lg:justify-start lg:gap-10 2xl:grid 2xl:grid-cols-4 ">
                 {data?.allProducts?.products && (
                   <PaginatedItems
                     itemsPerPage={12}
@@ -398,6 +436,11 @@ function AllProducts() {
                   </PaginatedItems>
                 )}
               </div>
+            </div>
+            <div className="fixed bottom-0 left-0 right-0 bg-white text-black w-full flex items-center justify-center z-50 shadow md:hidden">
+              <button className="p-2" onClick={() => handleToggleFilter()}>
+                Filter
+              </button>
             </div>
           </div>
         </>

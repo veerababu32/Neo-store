@@ -36,7 +36,7 @@ function PaginatedItems({
       ))}
 
       {pageCount > 1 && (
-        <div className="absolute right-0 bottom-16">
+        <div className="absolute bottom-10 lg:right-0 lg:bottom-16">
           <ReactPaginate
             breakLabel="..."
             nextLabel=">"
@@ -44,12 +44,12 @@ function PaginatedItems({
             pageRangeDisplayed={5}
             pageCount={pageCount}
             previousLabel="<"
-            containerClassName="flex justify-center mt-4 space-x-2 gap-2"
-            pageClassName="px-3 py-1 text-base font-medium"
+            containerClassName="flex flex-wrap justify-center mt-4 space-x-1 gap-1 md:flex-nowrap md:space-x-2 md:gap-2"
+            pageClassName="px-2 py-1 text-base font-medium md:px-3 md:text-base"
             activeClassName="bg-[#E91B1A] text-white rounded-sm"
-            previousClassName="px-3 py-1 text-base font-medium"
-            nextClassName="px-3 py-1 text-base font-medium"
-            breakClassName="px-3 py-1 text-base font-medium"
+            previousClassName="px-2 py-1 text-sm font-medium md:px-3 md:text-base"
+            nextClassName="px-2 py-1 text-sm font-medium md:px-3 md:text-base"
+            breakClassName="px-2 py-1 text-sm font-medium md:px-3 md:text-base"
             disabledClassName="opacity-50 cursor-not-allowed"
             forcePage={currentPage}
           />

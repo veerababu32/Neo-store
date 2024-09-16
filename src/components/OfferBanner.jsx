@@ -1,12 +1,11 @@
-import React from 'react';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 function OfferBanner() {
+  const menuBar = useSelector((state) => state.home.menuBar);
   return (
-    <div className={`bg-[#BB0100]`}>
-      <div
-        className={`text-white h-11 flex justify-center items-center gap-1 font-bold sm:text-base text-sm sm:container sm:mx-auto`}
-      >
+    <div className={`bg-[#BB0100] duration-200${menuBar ? ' hidden' : ''}`}>
+      <div className="text-white h-10 flex justify-center items-center gap-1 font-bold text-sm">
         MARKDOWNS:
         <span className="font-medium"> UP TO 70% OFF </span>
         <Link
