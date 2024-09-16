@@ -79,6 +79,18 @@ function Home() {
         },
       },
       {
+        breakpoint: 375,
+        settings: {
+          arrows: false,
+        },
+      },
+      {
+        breakpoint: 425,
+        settings: {
+          arrows: false,
+        },
+      },
+      {
         breakpoint: 768,
         settings: {
           arrows: true,
@@ -90,7 +102,7 @@ function Home() {
   const neostoreSettings = {
     slidesToShow: 6,
     arrows: false,
-    autoplay: false,
+    autoplay: true,
     responsive: [
       {
         breakpoint: 320,
@@ -238,7 +250,7 @@ function Home() {
               {data?.furniture?.products.length > 0 &&
                 data?.furniture?.products.slice(1).map((item) => (
                   <div className="w-[max-content] bg-[#EDEDED]" key={item.id}>
-                    <div className="bg-[#f6f6f6] p-4 shadow">
+                    <div className="bg-[#f6f6f6] p-4 shadow flex items-center justify-center">
                       <Image
                         src={item.images[0]}
                         alt={item['title']}

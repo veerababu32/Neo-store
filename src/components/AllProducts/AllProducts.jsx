@@ -189,7 +189,7 @@ function AllProducts() {
                           id={`filter-products-${index + 1}`}
                           checked={selectCheckbox === index + 1}
                           onChange={
-                            document.body.clientWidth === 320
+                            document.body.clientWidth <= 767
                               ? () => {
                                   handleCheckbox(index + 1);
                                   handleToggleFilter();

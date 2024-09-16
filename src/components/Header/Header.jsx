@@ -52,7 +52,7 @@ function Header() {
         <Link
           to="/"
           onClick={
-            document.body.clientWidth === 320 && toggleMenu
+            document.body.clientWidth <= 767 && toggleMenu
               ? () => {
                   handleToggleMenu();
                 }
@@ -71,7 +71,7 @@ function Header() {
                   className="text-sm inline-block px-4 py-2 duration-200 lg:text-base lg:px-6"
                   state={{ num: item.state }}
                   onClick={
-                    document.body.clientWidth === 320
+                    document.body.clientWidth <= 767
                       ? () => {
                           handleToggleMenu();
                         }
