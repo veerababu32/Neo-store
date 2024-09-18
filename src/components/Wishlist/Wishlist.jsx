@@ -18,10 +18,10 @@ function Wishlist() {
     <>
       <ToastContainer />
       <div
-        className="bg-no-repeat bg-cover h-24 flex items-center md:h-28 lg:h-36"
+        className="bg-no-repeat bg-cover h-24 flex items-center md:h-28 lg:h-36 xl:h-36 2xl:h-36"
         style={{ backgroundImage: `url(${productsBgImg})` }}
       >
-        <div className="flex items-center px-4 lg:container lg:mx-auto lg:px-8 2xl:px-0">
+        <div className="flex items-center px-4 lg:container lg:mx-auto lg:px-4 xl:container xl:mx-auto xl:px-8 2xl:container 2xl:mx-auto 2xl:px-0">
           <Link to={'/'} className="text-base font-medium text-black pr-4">
             Home
           </Link>
@@ -30,12 +30,12 @@ function Wishlist() {
           </span>
         </div>
       </div>
-      <div className="px-4 py-10 lg:container lg:mx-auto lg:px-8 2xl:px-0">
+      <div className="px-4 py-10 lg:container lg:mx-auto lg:px-4 xl:container xl:mx-auto xl:px-8 2xl:container 2xl:mx-auto 2xl:px-0">
         {wishlistItems.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-2 gap-8 s:grid-cols-1 xs:grid-cols-1 sm:flex sm:justify-center sm:flex-wrap">
             {wishlistItems.map((item, index) => (
               <div
-                className="w-auto flex flex-col items-center gap-4 border border-[#BFBFBF] p-2 lg:flex-row lg:items-start"
+                className="w-auto flex flex-col items-center gap-4 border border-[#BFBFBF] p-2 sm:px-10 sm:py-4 lg:flex-row lg:items-start xl:flex-row xl:items-start 2xl:flex-row 2xl:items-start"
                 key={index}
               >
                 <img
@@ -43,7 +43,7 @@ function Wishlist() {
                   alt={item.title}
                   className="w-[220px] h-[220px] shadow"
                 />
-                <div className="w-[220px] flex flex-col gap-2 xl:w-auto">
+                <div className="w-[220px] h-full flex flex-col justify-between gap-2 xl:w-auto 2xl:w-auto">
                   <h2 className="text-base font-medium">{item.title}</h2>
                   <p className="text-base font-medium capitalize">
                     Category: {item.category.replace('-', ' ')}
@@ -59,11 +59,11 @@ function Wishlist() {
                     </span>
                     &#8377;{item.price}
                   </p>
-                  <p className="text-base font-medium mb-2 xl:mb-[32px]">
+                  <p className="text-base font-medium mb-2 xl:mb-[32px] 2xl:mb-[32px]">
                     Quantity: {item.quantity}
                   </p>
                   <button
-                    className="w-full lg:w-[180px] bg-[#BB0100] text-base font-medium text-white py-2 rounded-sm"
+                    className="w-full bg-[#BB0100] text-base font-medium text-white py-2 rounded-sm lg:w-[180px] xl:w-[180px] 2xl:w-[180px]"
                     onClick={() => handleATC(item)}
                   >
                     Add To Cart

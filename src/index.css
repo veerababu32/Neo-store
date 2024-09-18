@@ -37,9 +37,11 @@ code {
   }
 }
 
-.mini-imgs-con {
-  height: 468px;
-  overflow-y: scroll;
+@media screen and (min-width: 1024px) {
+  .mini-imgs-con {
+    height: 468px;
+    overflow-y: scroll;
+  }
 }
 
 .mini-imgs-con::-webkit-scrollbar,
@@ -108,5 +110,9 @@ code {
     padding: 16px;
     z-index: 105;
     overflow-y: scroll;
+  }
+
+  .item-right-section {
+    width: calc(100% - 136px);
   }
 }

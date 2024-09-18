@@ -8,23 +8,25 @@ function Footer() {
   return (
     <>
       <section className="relative overflow-hidden p-4 bg-[#111111] xl:px-8 xl:py-10 2xl:px-0">
-        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-none xl:flex 2xl:container 2xl:mx-auto">
-          <div className="w-full xl:w-4/12">
+        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-none xl:flex 2xl:flex 2xl:container 2xl:mx-auto">
+          <div className="w-full xl:w-4/12 2xl:w-4/12">
             <div className="flex h-full flex-col justify-between">
-              <h1 className="font-bold text-xl text-[#BB0100] md:text-2xl lg:text-3xl">
+              <h1 className="font-bold text-xl text-[#BB0100] md:text-2xl lg:text-3xl xl:text-3xl 2xl:text-3xl">
                 NeoSTORE
               </h1>
               <form
-                className="h-12 md:w-fit rounded bg-white my-6 flex items-center gap-1 p-2"
+                className="h-12 w-fit rounded bg-white my-6 flex items-center justify-between p-2"
                 onSubmit={(e) => e.preventDefault()}
               >
-                <img src={gmail} alt="mail" />
-                <input
-                  type="text"
-                  name="footerMail"
-                  placeholder="Your email address"
-                  className="outline-none text-[#BB0100] pl placeholder-[#BB0100] text-sm font-medium"
-                />
+                <div className="flex gap-1">
+                  <img src={gmail} alt="mail" />
+                  <input
+                    type="text"
+                    name="footerMail"
+                    placeholder="Your email address"
+                    className="outline-none text-[#BB0100] pl placeholder-[#BB0100] text-sm font-medium"
+                  />
+                </div>
                 <div className="bg-[#BB0100] rounded flex items-center justify-center p-1">
                   <button type="submit" className="text-white text-sm">
                     Subscribe
@@ -43,7 +45,7 @@ function Footer() {
                     +91 12345 67890
                   </Link>
                 </div>
-                <p className="text-sm md:w-3/4">
+                <p className="text-sm w-3/4 s:w-auto xs:w-auto sm:w-auto">
                   17 Princess Road, London, Greater London NW1 8JR, UK
                 </p>
               </div>
@@ -66,7 +68,7 @@ function Footer() {
               </div>
             </div>
           </div>
-          <div className="w-full xl:w-2/12">
+          <div className="w-full xl:w-2/12 2xl:w-2/12">
             <div className="h-full text-white">
               <h3 className="mb-1 text-sm font-bold uppercase">Categories</h3>
               <ul>
@@ -103,7 +105,7 @@ function Footer() {
               </ul>
             </div>
           </div>
-          <div className="w-full xl:w-2/12">
+          <div className="w-full xl:w-2/12 2xl:w-2/12">
             <div className="h-full text-white">
               <h3 className="mb-1 text-sm font-bold uppercase">
                 Customer Service
@@ -137,7 +139,7 @@ function Footer() {
               </ul>
             </div>
           </div>
-          <div className="w-full xl:w-2/12">
+          <div className="w-full xl:w-2/12 2xl:w-2/12">
             <div className="h-full text-white">
               <h3 className="mb-1 text-sm font-bold uppercase">Furniture</h3>
               <ul>
@@ -174,7 +176,7 @@ function Footer() {
               </ul>
             </div>
           </div>
-          <div className="w-full xl:w-2/12">
+          <div className="w-full xl:w-2/12 2xl:w-2/12">
             <div className="h-full text-white">
               <h3 className="mb-1 text-sm font-bold uppercase">Useful Links</h3>
               <ul>

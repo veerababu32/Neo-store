@@ -63,10 +63,10 @@ function Cart() {
     <div id="cart">
       <ToastContainer />
       <div
-        className="bg-no-repeat bg-cover h-24 flex items-center md:h-28 lg:h-36"
+        className="bg-no-repeat bg-cover h-24 flex items-center md:h-28 lg:h-36 xl:h-36 2xl:h-36"
         style={{ backgroundImage: `url(${productsBgImg})` }}
       >
-        <div className="flex items-center px-4 lg:container lg:mx-auto lg:px-8 2xl:px-0">
+        <div className="flex items-center px-4 lg:container lg:mx-auto lg:px-4 xl:container xl:mx-auto xl:px-8 2xl:container 2xl:mx-auto 2xl:px-0">
           <Link to={'/'} className="text-base font-medium text-black pr-4">
             Home
           </Link>
@@ -75,37 +75,31 @@ function Cart() {
           </span>
         </div>
       </div>
-      <div className="pt-6 pb-14 px-4 lg:container lg:mx-auto lg:px-8 2xl:px-0">
+      <div className="pt-6 pb-14 px-4 lg:container lg:mx-auto lg:px-4 xl:container xl:mx-auto xl:px-8 2xl:container 2xl:mx-auto 2xl:px-0">
         {cartItems.length > 0 ? (
-          <div className="flex flex-col mb-10 gap-2 md:flex-row md:gap-5 md:mb-20">
-            <div className="w-full flex gap-2 flex-col md:w-3/4 md:gap-4">
+          <div className="flex mb-20 gap-5 s:flex-col s:mb-10 s:gap-2 xs:flex-col xs:mb-10 xs:gap-2 sm:flex-col sm:mb-10 sm:gap-2">
+            <div className="flex flex-col gap-4 w-3/4 s:w-full s:flex-col s:gap-2F xs:w-full xs:flex-col xs:gap-2 sm:w-full sm:flex-col sm:gap-2">
               {cartItems.map((item, index) => (
                 <div
-                  className="flex rounded-sm border border-[#BFBFBF] p-1 lg:p-4"
+                  className="flex rounded-sm border border-[#BFBFBF] p-1 lg:p-4 xl:p-4 2xl:p-4"
                   id={`cart_item_${item.id}`}
                   key={index}
                 >
-                  <div className="h-36 w-30 mr-2 shadow md:mr-5 md:w-36">
+                  <div className="h-36 w-36 mr-5 shadow s:w-32 s:mr-2 xs:w-32 xs:mr-2 sm:w-32 sm:mr-2">
                     <img
                       src={item.image}
                       alt={item.title}
-                      className="h-36 w-30 border rounded md:w-36"
+                      className="h-36 w-36 border rounded s:w-32 xs:w-32 sm:w-32"
                     />
                   </div>
-                  <div
-                    className={`flex justify-between${
-                      document.body.clientWidth >= '768'
-                        ? ' item-right-section'
-                        : ' '
-                    }`}
-                  >
+                  <div className="flex justify-between item-right-section">
                     <div className="flex flex-col justify-between">
-                      <div className="h-full flex flex-col justify-between md:gap-1">
+                      <div className="h-full flex flex-col justify-between md:gap-1 lg:gap-1 xl:gap-1 2xl:gap-1">
                         <div>
-                          <h2 className="text-xs font-normal text-[#666666] mb-1 md:text-sm">
+                          <h2 className="text-sm font-normal text-[#666666] mb-1 s:text-xs xs:text-xs sm:text-xs">
                             {item.title}
                           </h2>
-                          <p className="text-xs font-medium text-[#333333] mb-1 md:text-base">
+                          <p className="text-base font-medium text-[#333333] mb-1 s:text-xs xs:text-xs sm:text-xs">
                             <span className="mr-2 text-[#C2C2C2] line-through">
                               &#8377;
                               {(
@@ -116,7 +110,7 @@ function Cart() {
                             &#8377;{item.price}
                           </p>
                           {item.discount > 10 && (
-                            <p className="text-xs font-medium text-[#FE3F3F] mb-1 md:text-sm">
+                            <p className="text-sm font-medium text-[#FE3F3F] mb-1 s:text-xs xs:text-xs sm:text-xs">
                               you save:{' '}
                               <span>
                                 &#8377;
@@ -129,12 +123,12 @@ function Cart() {
                             </p>
                           )}
                         </div>
-                        <div className="flex flex-col justify-center gap-1 md:flex-row md:gap-4">
-                          <p className="text-xs font-medium md:text-base">
+                        <div className="flex flex-col justify-center gap-1 md:flex-row md:gap-4 lg:flex-row lg:gap-4 xl:flex-row xl:gap-4 2xl:flex-row 2xl:gap-4">
+                          <p className="text-base font-medium s:text-xs xs:text-xs sm:text-xs">
                             Quantity: {item.quantity}
                           </p>
                           <p
-                            className="flex items-center gap-1 w-fit text-xs font-normal text-[#E91B1A] cursor-pointer md:text-sm md:gap-2"
+                            className="flex items-center gap-2 w-fit text-sm font-normal text-[#E91B1A] cursor-pointer s:text-xs s:gap-1 xs:text-xs xs:gap-1 sm:text-xs sm:gap-1"
                             onClick={() => handleATW(item.id)}
                           >
                             <span
@@ -168,8 +162,8 @@ function Cart() {
                 </div>
               ))}
             </div>
-            <div className="w-full md:w-1/2 xl:w-1/3">
-              <div className="flex flex-col gap-2 rounded-sm border border-[#BFBFBF] p-2 md:p-4 lg:py-11 lg:px-9 lg:gap-4">
+            <div className="w-full md:w-1/2 lg:w-1/2 xl:w-1/3 2xl:w-1/3">
+              <div className="flex flex-col gap-2 rounded-sm border border-[#BFBFBF] p-2 md:p-4 lg:py-11 lg:px-9 lg:gap-4 xl:py-11 xl:px-9 xl:gap-4 2xl:py-11 2xl:px-9 2xl:gap-4">
                 <h3 className="text-base font-medium text-[#666666]">
                   Apply Coupon
                 </h3>
@@ -252,7 +246,7 @@ function Cart() {
             <h2 className="text-xl font-medium mb-1">
               Hey, it feels too light!
             </h2>
-            <p className="text-base font-medium text-[#666666] mb-4">
+            <p className="text-base font-medium text-[#666666] mb-4 text-center">
               There is nothing in your bag. Let's add some items.
             </p>
             <div className="text-center border border-[#BB0100] hover:bg-[#BB0100]">

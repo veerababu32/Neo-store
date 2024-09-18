@@ -13,7 +13,7 @@ function ReactSlider({ settings, children }) {
   const updatedSettings = { ...defaultSettings, ...settings };
 
   return (
-    <div className="slider-container container mx-auto xl:px-8 2xl:px-0">
+    <div className="slider-container container mx-auto lg:px-4 xl:px-8 2xl:px-0">
       <Slider {...updatedSettings}>{children}</Slider>
     </div>
   );

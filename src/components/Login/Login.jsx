@@ -99,27 +99,27 @@ function Login() {
       {loader ? (
         <Loader />
       ) : (
-        <div className="w-full flex flex-col lg:flex-row lg:justify-around p-4 xl:container xl:mx-auto xl:p-8 2xl:px-0">
-          <div className="flex flex-col xl:w-1/2">
-            <h1 className="font-bold text-xl text-center text-[#BB0100] mb-2 md:text-2xl lg:text-3xl xl:text-start">
+        <div className="w-full flex flex-row p-4 mx-auto s:flex-col xs:flex-col sm:flex-col lg:justify-around xl:container xl:p-8 2xl:container 2xl:px-0">
+          <div className="flex flex-col w-1/2 s:w-auto xs:w-auto sm:w-auto">
+            <h1 className="font-bold text-xl text-center text-[#BB0100] mb-2 md:text-2xl md:text-start lg:text-3xl lg:text-start xl:text-3xl xl:text-start 2xl:text-3xl 2xl:text-start">
               NeoSTORE
             </h1>
             <img
               src={LoginImg}
               alt="Login img"
-              className="hidden lg:inline-block lg:pt-8 xl:py-20 xl:mx-auto"
+              className="mx-auto  s:hidden xs:hidden sm:hidden lg:pt-8 xl:py-20 2xl:py-20"
             />
           </div>
-          <div className="flex justify-center items-center xl:w-1/2">
+          <div className="flex justify-center items-center w-1/2 s:w-auto xs:w-auto sm:w-auto">
             <form
               onSubmit={handleSubmit(onSubmit)}
-              className="h-max bg-white flex flex-col justify-center rounded-2xl w-fit p-4 xl:w-96 xl:py-10 xl:px-8"
+              className="h-max bg-white flex flex-col justify-center rounded-2xl w-fit p-4 xl:w-96 xl:py-10 xl:px-8 2xl:w-96 2xl:py-10 2xl:px-8"
               style={{ boxShadow: '0px 0px 15px 2px #0000000F' }}
             >
               <h1 className="font-bold text-2xl text-[#E91B1A] text-center">
                 LOG IN
               </h1>
-              <div className="pt-4 xl:pt-10">
+              <div className="pt-4 xl:pt-10 2xl:pt-10">
                 <div>
                   <Input
                     type="text"

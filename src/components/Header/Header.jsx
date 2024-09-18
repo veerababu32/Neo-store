@@ -48,7 +48,7 @@ function Header() {
   return (
     <section className="bg-white">
       <div className={`offcanvasSidebar${toggleMenu ? ' active' : ''}`}></div>
-      <nav className="flex justify-between items-center p-4 lg:container lg:mx-auto lg:px-8 2xl:px-0">
+      <nav className="flex justify-between items-center p-4 lg:container lg:mx-auto lg:px-4 xl:container xl:mx-auto xl:px-8 2xl:container 2xl:mx-auto 2xl:px-0">
         <Link
           to="/"
           onClick={
@@ -58,17 +58,17 @@ function Header() {
                 }
               : null
           }
-          className="font-bold text-xl text-[#BB0100] md:text-2xl lg:text-3xl z-[115]"
+          className="font-bold text-xl text-[#BB0100] z-[115] md:text-2xl lg:text-3xl xl:text-3xl 2xl:text-3xl"
         >
           NeoSTORE
         </Link>
         <div className={`menu${toggleMenu ? ' active' : ''}`}>
-          <div className="h-[40px] md:hidden"></div>
-          <ul className="flex flex-col md:flex-row">
+          <div className="h-[40px] md:hidden lg:hidden xl:hidden 2xl:hidden"></div>
+          <ul className="flex flex-row s:flex-col xs:flex-col sm:flex-col">
             {navItems.map((item, index) => (
               <li key={index}>
                 <Link
-                  className="text-sm inline-block px-4 py-2 duration-200 lg:text-base lg:px-6"
+                  className="text-sm inline-block px-4 py-2 duration-200 lg:text-base lg:px-6 xl:text-base xl:px-6 2xl:text-base 2xl:px-6"
                   state={{ num: item.state }}
                   onClick={
                     document.body.clientWidth <= 767
@@ -133,7 +133,7 @@ function Header() {
             )}
             <img src={cart} alt="cart" />
           </Link>
-          <div className="z-[105] md:hidden">
+          <div className="z-[105] md:hidden lg:hidden xl:hidden 2xl:hidden">
             <Hamburger
               rounded
               size={22}

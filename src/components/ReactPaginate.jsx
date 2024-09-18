@@ -36,7 +36,7 @@ function PaginatedItems({
       ))}
 
       {pageCount > 1 && (
-        <div className="absolute bottom-10 lg:right-0 lg:bottom-16">
+        <div className="absolute bottom-10 lg:right-0 lg:bottom-16 xl:right-0 xl:bottom-16 2xl:right-0 2xl:bottom-16">
           <ReactPaginate
             breakLabel="..."
             nextLabel=">"
@@ -44,12 +44,12 @@ function PaginatedItems({
             pageRangeDisplayed={5}
             pageCount={pageCount}
             previousLabel="<"
-            containerClassName="flex flex-wrap justify-center mt-4 space-x-1 gap-1 md:flex-nowrap md:space-x-2 md:gap-2"
-            pageClassName="px-2 py-1 text-base font-medium md:px-3 md:text-base"
+            containerClassName="flex flex-wrap justify-center mt-4 space-x-1 gap-1 md:flex-nowrap md:space-x-2 md:gap-2 lg:flex-nowrap lg:space-x-2 lg:gap-2 xl:flex-nowrap xl:space-x-2 xl:gap-2 2xl:flex-nowrap 2xl:space-x-2 2xl:gap-2"
+            pageClassName="px-3 py-1 text-base font-medium s:text-sm s:px-2 xs:text-sm xs:px-2 sm:text-sm sm:px-2"
             activeClassName="bg-[#E91B1A] text-white rounded-sm"
-            previousClassName="px-2 py-1 text-sm font-medium md:px-3 md:text-base"
-            nextClassName="px-2 py-1 text-sm font-medium md:px-3 md:text-base"
-            breakClassName="px-2 py-1 text-sm font-medium md:px-3 md:text-base"
+            previousClassName="px-3 py-1 text-base font-medium s:text-sm s:px-2 xs:text-sm xs:px-2 sm:text-sm sm:px-2"
+            nextClassName="px-3 py-1 text-base font-medium s:text-sm s:px-2 xs:text-sm xs:px-2 sm:text-sm sm:px-2"
+            breakClassName="px-3 py-1 text-base font-medium s:text-sm s:px-2 xs:text-sm xs:px-2 sm:text-sm sm:px-2"
             disabledClassName="opacity-50 cursor-not-allowed"
             forcePage={currentPage}
           />

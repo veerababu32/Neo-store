@@ -3,7 +3,6 @@ import Header from './Header/Header';
 import OfferBanner from './OfferBanner';
 import Home from './Home/Home';
 import Footer from './Footer/Footer';
-import Container from './Container';
 import Loader from './Loader';
 import Input from './Input';
 import Signup from './Signup/Signup';
@@ -24,7 +23,6 @@ export {
   OfferBanner,
   Home,
   Footer,
-  Container,
   Loader,
   Input,
   Signup,

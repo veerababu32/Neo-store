@@ -140,10 +140,10 @@ function AllProducts() {
       ) : (
         <>
           <div
-            className="bg-no-repeat bg-cover h-24 flex items-center md:h-28 lg:h-36"
+            className="bg-no-repeat bg-cover h-24 flex items-center md:h-28 lg:h-36 xl:h-36 2xl:h-36"
             style={{ backgroundImage: `url(${productsBgImg})` }}
           >
-            <div className="flex items-center px-4 lg:container lg:mx-auto lg:px-8 2xl:px-0">
+            <div className="flex items-center px-4 lg:container lg:mx-auto lg:px-4 xl:container xl:mx-auto xl:px-8 2xl:container 2xl:mx-auto 2xl:px-0">
               <Link to={'/'} className="text-base font-medium text-black pr-4">
                 Home
               </Link>
@@ -152,13 +152,13 @@ function AllProducts() {
               </div>
             </div>
           </div>
-          <div className="relative flex px-4 py-6 lg:container lg:mx-auto lg:px-8 2xl:px-0">
+          <div className="relative flex px-4 py-6 lg:container lg:mx-auto lg:px-4 xl:container xl:mx-auto xl:px-8 2xl:container 2xl:mx-auto 2xl:px-0">
             <div
-              className={`filterBar md:block md:w-2/6 lg:h-1/4${
+              className={`filterBar md:block md:w-2/6 lg:w-1/4 xl:w-1/4 2xl:w-1/4${
                 toggleFilter ? ' active' : ''
               }`}
             >
-              <div className="flex items-center justify-between md:hidden">
+              <div className="flex items-center justify-between md:hidden lg:hidden xl:hidden 2xl:hidden">
                 <Link
                   to="/"
                   onClick={() => handleToggleFilter()}
@@ -393,7 +393,7 @@ function AllProducts() {
                 data?.allProducts?.products?.length > 5 ? ' pb-40' : ''
               }`}
             >
-              <div className="flex justify-center flex-wrap gap-4 lg:justify-start lg:gap-10 2xl:grid 2xl:grid-cols-4 ">
+              <div className="flex justify-center flex-wrap gap-4 lg:gap-10 xl:justify-start xl:gap-10 2xl:grid 2xl:grid-cols-4 2xl:gap-10">
                 {data?.allProducts?.products && (
                   <PaginatedItems
                     itemsPerPage={12}
@@ -437,7 +437,7 @@ function AllProducts() {
                 )}
               </div>
             </div>
-            <div className="fixed bottom-0 left-0 right-0 bg-white text-black w-full flex items-center justify-center z-50 shadow md:hidden">
+            <div className="fixed bottom-0 left-0 right-0 bg-white text-black w-full flex items-center justify-center z-50 shadow md:hidden lg:hidden xl:hidden 2xl:hidden">
               <button className="p-2" onClick={() => handleToggleFilter()}>
                 Filter
               </button>
